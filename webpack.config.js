@@ -1,4 +1,4 @@
-const {DllReferencePlugin} = require('webpack');
+const { DllReferencePlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 

@@ -6,13 +6,13 @@
 const glob = require('glob');
 const path = require('path');
 const sass = require('node-sass');
-const {promisify} = require('util');
+const { promisify } = require('util');
 
-module.exports = async function() {
+module.exports = async function () {
   const callback = this.async();
 
   try {
-    const result = await promisify(sass.render)({file: this.resourcePath, ...this.query});
+    const result = await promisify(sass.render)({ file: this.resourcePath, ...this.query });
     result.stats.includedFiles.forEach((file) => this.addDependency(path.resolve(file)));
     callback(null, result.css, result.map);
   } catch (err) {

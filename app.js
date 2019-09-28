@@ -121,7 +121,7 @@ const menuEl = mainEl.querySelector('.mdc-menu');
 const menu = new MDCMenu(menuEl);
 menu.open = true;
 // Override MDCMenuSurfaceFoundation so the menu never closes
-menu.menuSurface_.foundation_.close = () => {};
+menu.menuSurface_.foundation_.close = () => { };
 // Focus first component when menu is done opening
 menuEl.addEventListener('MDCMenuSurface:opened', () => document.querySelector('.mdc-button').focus());
 
@@ -156,8 +156,8 @@ const formField = new MDCFormField(themeBuilderDrawerEl.querySelector('.mdc-form
 const rtlSwitch = new MDCSwitch(themeBuilderDrawerEl.querySelector('.rtl-switch'));
 formField.input = rtlSwitch;
 const rtlInput = themeBuilderDrawerEl.querySelector('#rtl-input');
-rtlInput.addEventListener('change', function() {
-  [].forEach.call(mainEl.querySelectorAll('.column'), function(columnEl) {
+rtlInput.addEventListener('change', function () {
+  [].forEach.call(mainEl.querySelectorAll('.column'), function (columnEl) {
     if (rtlInput.checked) {
       columnEl.setAttribute('dir', 'rtl');
       linearProgressEl.classList.add('mdc-linear-progress--reversed');
@@ -217,7 +217,7 @@ layoutForScreenSize();
   const node = document.createElement("span");
   const textnode = document.createTextNode(`${sizeVals};`);
   node.classList.add('varValue');
-  node.appendChild(textnode); 
+  node.appendChild(textnode);
 
   // Append text of the element adjacent sibling to the end of the text string
   elem.previousElementSibling.appendChild(node)
@@ -225,13 +225,13 @@ layoutForScreenSize();
 
 // Color Visualization
 const rgbToHex = (col) => {
-  if(col.charAt(0)=='r') {
-    col=col.replace('rgb(','').replace(')','').split(',');
-    var r=parseInt(col[0], 10).toString(16);
-    var g=parseInt(col[1], 10).toString(16);
-    var b=parseInt(col[2], 10).toString(16);
-    r=r.length==1?'0'+r:r; g=g.length==1?'0'+g:g; b=b.length==1?'0'+b:b;
-    var colHex='#'+r+g+b;
+  if (col.charAt(0) == 'r') {
+    col = col.replace('rgb(', '').replace(')', '').split(',');
+    var r = parseInt(col[0], 10).toString(16);
+    var g = parseInt(col[1], 10).toString(16);
+    var b = parseInt(col[2], 10).toString(16);
+    r = r.length == 1 ? '0' + r : r; g = g.length == 1 ? '0' + g : g; b = b.length == 1 ? '0' + b : b;
+    var colHex = '#' + r + g + b;
     return colHex;
   }
 }
@@ -243,7 +243,7 @@ const rgbToHex = (col) => {
   const node = document.createElement("span");
   const textnode = document.createTextNode(`: ${bgColor};`);
   node.classList.add('varValue');
-  node.appendChild(textnode); 
+  node.appendChild(textnode);
 
   // Append text of the element adjacent sibling to the end of the text string
   elem.previousElementSibling.appendChild(node)
@@ -253,10 +253,10 @@ const rgbToHex = (col) => {
 const setVisibleFont = () => {
   const fontSample = document.querySelector('.mdc-typography--headline1')
   const fontUrl = `https://fonts.google.com/specimen/${getComputedStyle(fontSample).fontFamily.split(',', 1)[0].replace(/ /g, '+').replace(/['"]+/g, '')}`
-  
+
   // Set actual CSS
   document.querySelector('.font-name').innerHTML = getComputedStyle(fontSample).fontFamily
-  
+
   // Set Link
   document.querySelector('.font-link').href = fontUrl
 }
